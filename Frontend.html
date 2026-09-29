@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect" />
+  <link as="style"
+    href="https://fonts.googleapis.com/css2?display=swap&family=Inter%3Awght%40400%3B500%3B700%3B900&family=Noto+Sans%3Awght%40400%3B500%3B700%3B900"
+    onload="this.rel='stylesheet'" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  <title>Fake News Detection System</title>
+  <link href="data:image/x-icon;base64," rel="icon" type="image/x-icon" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#8B5CF6",
+            "background-light": "#F0F4F8",
+            "background-dark": "#1A202C",
+            "surface-light": "#FFFFFF",
+            "surface-dark": "#2D3748",
+            "text-light": "#2D3748",
+            "text-dark": "#E2E8F0",
+            "subtle-light": "#718096",
+            "subtle-dark": "#A0AEC0",
+            "success-light": "#6EE7B7",
+            "success-dark": "#34D399",
+            "danger-light": "#FECACA",
+            "danger-dark": "#FCA5A5",
+            "accent-blue": "#93C5FD",
+            "accent-pink": "#FBCFE8",
+          },
+          fontFamily: {
+            display: ["Inter", "sans-serif"],
+          },
+          borderRadius: {
+            DEFAULT: "1rem",
+            lg: "1.5rem",
+            xl: "2rem",
+            full: "9999px",
+          },
+          boxShadow: {
+            DEFAULT: "0 4px 10px rgba(0, 0, 0, 0.08)",
+            md: "0 6px 15px rgba(0, 0, 0, 0.1)",
+            lg: "0 10px 25px rgba(0, 0, 0, 0.15)",
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    /* Moved from the TailwindCSS style block to a standard one to work correctly */
+    body {
+      background: linear-gradient(135deg,
+          var(--tw-colors-background-light),
+          var(--tw-colors-accent-blue),
+          var(--tw-colors-accent-pink));
+      background-size: 400% 400%;
+      animation: gradient-animation 15s ease infinite;
+    }
+
+    @keyframes gradient-animation {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-background-light font-display text-text-light dark:bg-background-dark dark:text-text-dark">
+  <div class="flex min-h-screen flex-col">
+    <header
+      class="sticky top-0 z-10 flex items-center justify-between rounded-b-xl border-b border-white/20 bg-surface-light/80 px-4 py-3 shadow-md backdrop-blur-sm dark:bg-surface-dark/80 sm:px-6 md:px-8">
+      <div class="flex items-center gap-3">
+        <span class="material-symbols-outlined text-4xl text-primary"> fact_check </span>
+        <h2 class="text-xl font-bold">FactCheck AI</h2>
+      </div>
+      <div class="flex items-center gap-4">
+        <nav class="hidden items-center gap-6 md:flex">
+          <a class="text-sm font-medium text-subtle-light transition-colors hover:text-primary dark:text-subtle-dark dark:hover:text-primary"
+            href="#">About</a>
+          <a class="text-sm font-medium text-subtle-light transition-colors hover:text-primary dark:text-subtle-dark dark:hover:text-primary"
+            href="#">Privacy Policy</a>
+          <a class="text-sm font-medium text-subtle-light transition-colors hover:text-primary dark:text-subtle-dark dark:hover:text-primary"
+            href="#">Contact</a>
+        </nav>
+        <button
+          class="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-text-light shadow-sm transition-transform hover:scale-105 hover:bg-primary/20 dark:text-text-dark">
+          <span class="material-symbols-outlined text-xl"> light_mode </span>
+        </button>
+        <div class="h-10 w-10 rounded-full bg-cover bg-center shadow-md"
+          style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAfk0l5djXR2KuNX6mLIWC-zEchhlmO24B7v6pYIzUHUUZHKug_hl3dwJmSEMB6msUPj9pW5LkV_Kw1FfCd0u_M3bMmtYRKKzz57oWCr5GsmamABlb3BKbNQAbjqGh-_SSFaBKVKilz89BjecC2PoY7UitVOLYU7Yjwc9ape7QwuUuoRu3TRod8kPyP-JVx9C-tJprEcYkaJByq1BnxZb8RJ64rmlIoT-ZNsZ9_g6g0YNFs1gjudk5LI4RIrIAV2KyqxH_zma0aGy8");'></div>
+      </div>
+    </header>
+    <main class="container mx-auto flex-grow px-4 py-8 sm:px-6 md:py-12">
+      <div class="mx-auto max-w-4xl">
+        <div class="text-center">
+          <h1 class="text-5xl font-extrabold tracking-tight sm:text-6xl">Fake News Detection System</h1>
+          <p class="mt-4 text-xl text-subtle-light dark:text-subtle-dark">
+            Powered by AI & Retrieval-Augmented Generation (RAG)
+          </p>
+        </div>
+        <div class="mt-10 rounded-xl bg-surface-light p-8 shadow-lg dark:bg-surface-dark">
+          <textarea
+            class="form-input w-full resize-none rounded-lg border-2 border-accent-blue/50 bg-background-light p-4 text-base placeholder:text-subtle-light focus:border-primary focus:ring-2 focus:ring-primary/50 dark:bg-background-dark dark:placeholder:text-subtle-dark"
+            placeholder="Enter news text here..." rows="8"></textarea>
+          <div class="mt-6 flex justify-end">
+            <button
+              class="flex h-14 items-center justify-center rounded-full bg-primary px-8 text-base font-bold text-white shadow-xl transition-transform hover:scale-105 hover:shadow-2xl">
+              Check News
+            </button>
+          </div>
+        </div>
+        <div class="mt-12">
+          <h2 class="text-3xl font-bold">Results</h2>
+          <div class="mt-6 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <div
+              class="flex flex-col items-center rounded-xl bg-success-light/30 p-8 text-center shadow-md dark:bg-success-dark/30 md:col-span-1">
+              <span class="material-symbols-outlined text-7xl text-success-light dark:text-success-dark">verified</span>
+              <p class="mt-4 text-3xl font-bold text-success-light dark:text-success-dark">Verdict: Real</p>
+              <p class="mt-2 text-lg font-medium text-subtle-light dark:text-subtle-dark">Confidence Score: 95%</p>
+            </div>
+            <div class="rounded-xl bg-surface-light p-8 shadow-md dark:bg-surface-dark lg:col-span-2">
+              <h3 class="text-xl font-bold">Evidence</h3>
+              <p class="mt-2 text-base text-subtle-light dark:text-subtle-dark">
+                Retrieved snippets from trusted sources:
+              </p>
+              <div class="mt-6 space-y-4">
+                <div
+                  class="rounded-lg border-2 border-accent-blue/40 bg-background-light p-4 shadow-sm dark:bg-background-dark">
+                  <p class="font-medium">Snippet: 'The news is confirmed by multiple sources.'</p>
+                  <p class="text-sm text-subtle-light dark:text-subtle-dark">Source: Reputable News Outlet</p>
+                </div>
+                <div
+                  class="rounded-lg border-2 border-accent-blue/40 bg-background-light p-4 shadow-sm dark:bg-background-dark">
+                  <p class="font-medium">
+                    Snippet: 'Our analysis supports the veracity of this information.'
+                  </p>
+                  <p class="text-sm text-subtle-light dark:text-subtle-dark">Source: Fact-Checking Organization</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-8 rounded-xl bg-surface-light p-8 shadow-md dark:bg-surface-dark">
+            <h3 class="text-xl font-bold">Model Explanation</h3>
+            <p class="mt-3 text-base leading-relaxed text-subtle-light dark:text-subtle-dark">
+              The model uses a combination of AI and RAG to analyze the news text. It retrieves relevant information
+              from trusted sources and generates an explanation based on the evidence.
+            </p>
+          </div>
+          <div class="mt-10 flex justify-end gap-4">
+            <button
+              class="flex h-14 items-center justify-center gap-2 rounded-full bg-primary/10 px-6 text-base font-bold text-primary shadow-sm transition-transform hover:scale-105 hover:bg-primary/20">
+              <span class="material-symbols-outlined text-xl"> content_copy </span>
+              Copy Result
+            </button>
+            <button
+              class="flex h-14 items-center justify-center gap-2 rounded-full bg-primary/10 px-6 text-base font-bold text-primary shadow-sm transition-transform hover:scale-105 hover:bg-primary/20">
+              <span class="material-symbols-outlined text-xl"> share </span>
+              Share
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="rounded-t-xl border-t border-white/20 bg-surface-light p-8 shadow-inner dark:bg-surface-dark">
+      <div class="container mx-auto px-4 sm:px-6">
+        <div class="flex flex-col items-center justify-between gap-6 md:flex-row">
+          <div class="flex flex-wrap justify-center gap-x-6 gap-y-2">
+            <a class="text-sm text-subtle-light transition-colors hover:text-primary dark:text-subtle-dark dark:hover:text-primary"
+              href="#">About</a>
+            <a class="text-sm text-subtle-light transition-colors hover:text-primary dark:text-subtle-dark dark:hover:text-primary"
+              href="#">Privacy Policy</a>
+            <a class="text-sm text-subtle-light transition-colors hover:text-primary dark:text-subtle-dark dark:hover:text-primary"
+              href="#">Contact</a>
+          </div>
+          <div class="flex justify-center gap-4">
+            <a href="#">
+              <svg class="text-subtle-light transition-colors hover:text-primary dark:text-subtle-dark dark:hover:text-primary"
+                fill="currentColor" height="24px" viewBox="0 0 256 256" width="24px"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M247.39,68.94A8,8,0,0,0,240,64H209.57A48.66,48.66,0,0,0,168.1,40a46.91,46.91,0,0,0-33.75,13.7A47.9,47.9,0,0,0,120,88v6.09C79.74,83.47,46.81,50.72,46.46,50.37a8,8,0,0,0-13.65,4.92c-4.31,47.79,9.57,79.77,22,98.18a110.93,110.93,0,0,0,21.88,24.2c-15.23,17.53-39.21,26.74-39.47,26.84a8,8,0,0,0-3.85,11.93c.75,1.12,3.75,5.05,11.08,8.72C53.51,229.7,65.48,232,80,232c70.67,0,129.72-54.42,135.75-124.44l29.91-29.9A8,8,0,0,0,247.39,68.94Zm-45,29.41a8,8,0,0,0-2.32,5.14C196,166.58,143.28,216,80,216c-10.56,0-18-1.4-23.22-3.08,11.51-6.25,27.56-17,37.88-32.48A8,8,0,0,0,92,169.08c-.47-.27-43.91-26.34-44-96,16,13,45.25,33.17,78.67,38.79A8,8,0,0,0,136,104V88a32,32,0,0,1,9.6-22.92A30.94,30.94,0,0,1,167.9,56c12.66.16,24.49,7.88,29.44,19.21A8,8,0,0,0,204.67,80h16Z">
+                </path>
+              </svg>
+            </a>
+            <a href="#">
+              <svg class="text-subtle-light transition-colors hover:text-primary dark:text-subtle-dark dark:hover:text-primary"
+                fill="currentColor" height="24px" viewBox="0 0 256 256" width="24px"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M216,24H40A16,16,0,0,0,24,40V216a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V40A16,16,0,0,0,216,24Zm0,192H40V40H216V216ZM96,112v64a8,8,0,0,1-16,0V112a8,8,0,0,1,16,0Zm88,28v36a8,8,0,0,1-16,0V140a20,20,0,0,0-40,0v36a8,8,0,0,1-16,0V112a8,8,0,0,1,15.79-1.78A36,36,0,0,1,184,140ZM100,84A12,12,0,1,1,88,72,12,12,0,0,1,100,84Z">
+                </path>
+              </svg>
+            </a>
+          </div>
+          <p class="text-sm text-subtle-light dark:text-subtle-dark">© 2024 FactCheck AI. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+</body>
+
+</html>

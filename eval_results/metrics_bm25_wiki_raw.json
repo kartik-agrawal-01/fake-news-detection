@@ -1,0 +1,26 @@
+{
+  "setting": "bm25_wiki_raw",
+  "n": 106,
+  "accuracy": 0.566,
+  "majority_class_baseline": 0.5943,
+  "fake_precision": 0.4746,
+  "fake_recall": 0.6512,
+  "fake_f1": 0.549,
+  "real_precision": 0.6809,
+  "real_recall": 0.5079,
+  "real_f1": 0.5818,
+  "macro_f1": 0.5654,
+  "confusion_matrix_[[TN_fake,FP],[FN,TP_real]]": [
+    [
+      28,
+      15
+    ],
+    [
+      31,
+      32
+    ]
+  ],
+  "wikipedia_used_count": 41,
+  "seconds": 779.8,
+  "date": "2026-09-29"
+}

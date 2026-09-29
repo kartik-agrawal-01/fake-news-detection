@@ -1,0 +1,38 @@
+# Large datasets not used by the pipeline (see README for sources)
+Fake.csv
+True.csv
+gossipcop_*.csv
+
+# Model weights and checkpoints (distilgpt2 fine-tune is ~313 MB; checkpoints ~940 MB each)
+v1/
+fine_tuned_distilgpt2/
+fine_tuned_distilgpt2_backup/
+*.safetensors
+*.bin
+*.pt
+*.pth
+
+# Generated artifacts (rebuilt automatically on first run)
+bm25_retriever.pkl
+generator_config.pkl
+faiss_documents.pkl
+faiss_semantic_index.bin
+*.pkl
+
+# Python
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+env/
+
+# Secrets
+.env
+
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+logs/
